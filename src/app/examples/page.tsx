@@ -86,7 +86,7 @@ export default function ExamplesPage() {
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
               Home
             </Link>
-            <Link className="text-sm font-medium text-rose-600" href="#">
+            <Link className="text-sm font-medium text-rose-600" href="examples">
               Examples
             </Link>
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">

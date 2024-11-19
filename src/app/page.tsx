@@ -8,32 +8,27 @@ import ComparisonSection from '../components/Comparison-section';
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-rose-50 via-white to-rose-50">
-      <header className="fixed top-0 w-full border-b bg-white/50 backdrop-blur-xl z-50">
-        <div className="container mx-auto flex h-16 items-center px-4">
-          <Link className="flex items-center gap-2 font-semibold" href="#">
+     <header className="border-b bg-white/50 backdrop-blur-xl">
+        <div className="container mx-auto flex h-16 items-center justify-between px-4">
+          <Link className="flex items-center gap-2 font-semibold" href="/">
             <Network className="h-6 w-6 text-rose-600" />
             <span className="text-xl">WebRedesign</span>
           </Link>
-          <nav className="ml-8 hidden gap-6 md:flex">
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
-              Features
+          <nav className="hidden gap-6 md:flex">
+            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="/">
+              Home
             </Link>
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="examples">
+            <Link className="text-sm font-medium text-rose-600" href="/examples">
               Examples
             </Link>
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
               Pricing
             </Link>
-          </nav>
-          <div className="ml-auto flex items-center gap-4">
-            <Link
-              className="hidden text-sm font-medium text-muted-foreground transition hover:text-rose-600 md:block"
-              href="#"
-            >
-              Sign In
+            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
+
             </Link>
-            <Button className="bg-rose-600 text-white hover:bg-rose-700">Get Started</Button>
-          </div>
+          </nav>
+          <Button className="bg-rose-600 text-white hover:bg-rose-700">Get Started</Button>
         </div>
       </header>
       <main className="container mx-auto px-4">
