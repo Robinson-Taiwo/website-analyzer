@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import ComparisonSection from "../components/Comparison-section";
+import PricingModal from "@/components/Pricing-modal";
 
 export default function LandingPage() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,6 +20,14 @@ export default function LandingPage() {
       document.body.style.overflow = ""; // Cleanup on unmount
     };
   }, [isMobileMenuOpen]);
+
+
+  const [isPricingModalVisible, setIsPricingModalVisible] = useState(false);
+
+  const togglePricingModal = () => {
+    setIsPricingModalVisible(!isPricingModalVisible);
+  };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-rose-50 via-white to-rose-50">
@@ -37,9 +46,9 @@ export default function LandingPage() {
             <Link className="text-sm font-medium text-rose-600" href="examples">
               Examples
             </Link>
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
+            <Button onClick={togglePricingModal} className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" >
               Pricing
-            </Link>
+            </Button>
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
               Contact
             </Link>
@@ -62,15 +71,15 @@ export default function LandingPage() {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <nav className="flex flex-col justify-center text-center gap-4 p-4 bg-white md:hidden">
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
+            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#"> 
               Home
             </Link>
             <Link className="text-sm font-medium text-rose-600" href="examples">
               Examples
             </Link>
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
+            <Button className="text-sm shadow-none hover:bg-transparent  outline-none bg-transparent font-medium text-muted-foreground transition hover:text-rose-600" onClick={togglePricingModal}>
               Pricing
-            </Link>
+            </Button>
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
               Contact
             </Link>
@@ -111,7 +120,12 @@ export default function LandingPage() {
               </button>
             </form>
           </div>
-
+          {/* Pricing Modal */}
+          {isPricingModalVisible && (
+            <PricingModal
+              onClose={() => setIsPricingModalVisible(false)}
+            />
+          )}
           <div className="grid w-full max-w-5xl gap-8 px-4 sm:grid-cols-3">
             {/* Cards */}
           </div>

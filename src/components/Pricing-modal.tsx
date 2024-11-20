@@ -49,8 +49,8 @@ export default function PricingModal({ onClose }: { onClose: () => void }) {
 
   return (
     <Dialog open onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
+      <DialogContent  className="sm:max-w-[425px] ">
+        <DialogHeader  >
           <DialogTitle className="text-2xl font-bold text-rose-950">Purchase Credits</DialogTitle>
           <DialogDescription>
             Buy credits to use for website redesigns. No monthly commitment required.
