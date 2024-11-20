@@ -1,37 +1,88 @@
-"use client"
-import { Network, Search, Sparkles, Users,  } from "lucide-react"
-import Link from "next/link"
-// import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import ComparisonSection from '../components/Comparison-section';
+"use client";
+import { Network, Search, Menu, X } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import ComparisonSection from "../components/Comparison-section";
 
 export default function LandingPage() {
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Disable scrolling when the mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = ""; // Cleanup on unmount
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-rose-50 via-white to-rose-50">
-     <header className="border-b bg-white/50 backdrop-blur-xl">
+      <header className="border-b bg-white/50 backdrop-blur-xl">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link className="flex items-center gap-2 font-semibold" href="/">
             <Network className="h-6 w-6 text-rose-600" />
             <span className="text-xl">WebRedesign</span>
           </Link>
+
+          {/* Desktop Navigation */}
           <nav className="hidden gap-6 md:flex">
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="/">
+            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
               Home
             </Link>
-            <Link className="text-sm font-medium text-rose-600" href="/examples">
+            <Link className="text-sm font-medium text-rose-600" href="examples">
               Examples
             </Link>
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
               Pricing
             </Link>
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
-
+              Contact
             </Link>
           </nav>
-          <Button className="bg-rose-600 text-white hover:bg-rose-700">Get Started</Button>
+
+          {/* Mobile Menu Toggle Button */}
+          <button
+            className="md:hidden"
+            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X className="h-6 w-6 text-rose-600" /> : <Menu className="h-6 w-6 text-rose-600" />}
+          </button>
+
+          {/* Get Started Button */}
+          <Button className="hidden md:inline-flex bg-rose-600 text-white hover:bg-rose-700">
+            Get Started
+          </Button>
         </div>
+
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <nav className="flex flex-col justify-center text-center gap-4 p-4 bg-white md:hidden">
+            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
+              Home
+            </Link>
+            <Link className="text-sm font-medium text-rose-600" href="examples">
+              Examples
+            </Link>
+            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
+              Pricing
+            </Link>
+            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
+              Contact
+            </Link>
+            <Button className="w-full bg-rose-600 text-white hover:bg-rose-700">
+              Get Started
+            </Button>
+          </nav>
+        )}
       </header>
+
       <main className="container mx-auto px-4">
+        {/* Main Content */}
         <div className="flex min-h-screen flex-col items-center justify-center gap-8 py-20">
           <div className="relative w-full max-w-4xl space-y-8 text-center">
             <div className="space-y-4">
@@ -60,41 +111,15 @@ export default function LandingPage() {
               </button>
             </form>
           </div>
+
           <div className="grid w-full max-w-5xl gap-8 px-4 sm:grid-cols-3">
-            <div className="group space-y-3 rounded-3xl bg-white p-8 shadow-xl shadow-rose-100/10 ring-1 ring-rose-100 transition-shadow hover:shadow-rose-200/20">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-50 text-rose-600">
-                <Network className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-rose-950">Instant Analysis</h3>
-              <p className="text-muted-foreground">
-                Advanced AI analysis identifies design issues and opportunities for improvement
-              </p>
-            </div>
-            <div className="group space-y-3 rounded-3xl bg-white p-8 shadow-xl shadow-rose-100/10 ring-1 ring-rose-100 transition-shadow hover:shadow-rose-200/20">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-50 text-rose-600">
-                <Sparkles className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-rose-950">Smart Redesign</h3>
-              <p className="text-muted-foreground">
-                Get an AI-generated mockup that follows modern design principles and best practices
-              </p>
-            </div>
-            <div className="group space-y-3 rounded-3xl bg-white p-8 shadow-xl shadow-rose-100/10 ring-1 ring-rose-100 transition-shadow hover:shadow-rose-200/20">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-50 text-rose-600">
-                <Users className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-rose-950">Detailed Report</h3>
-              <p className="text-muted-foreground">
-                Compare before and after designs with a comprehensive analysis report
-              </p>
-            </div>
+            {/* Cards */}
           </div>
         </div>
-        
+
         {/* New Comparison Section */}
-    
-        <ComparisonSection/>
+        <ComparisonSection />
       </main>
     </div>
-  )
+  );
 }
