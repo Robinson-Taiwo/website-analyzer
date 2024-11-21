@@ -46,9 +46,9 @@ export default function LandingPage() {
             <Link className="text-sm font-medium text-rose-600" href="examples">
               Examples
             </Link>
-            <Button onClick={togglePricingModal} className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" >
+            <button onClick={togglePricingModal} className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" >
               Pricing
-            </Button>
+            </button>
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
               Contact
             </Link>

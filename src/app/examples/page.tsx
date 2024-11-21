@@ -1,8 +1,8 @@
 "use client"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Check, Network } from 'lucide-react'
+import { ArrowRight, Check, Menu, Network, X } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
@@ -13,6 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import PricingModal from '@/components/Pricing-modal'
 
 const exampleSites = [
   {
@@ -68,7 +69,33 @@ type Site = {
 }
 
 
+
+
+
 export default function ExamplesPage() {
+
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Disable scrolling when the mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = ""; // Cleanup on unmount
+    };
+  }, [isMobileMenuOpen]);
+
+
+  const [isPricingModalVisible, setIsPricingModalVisible] = useState(false);
+
+  const togglePricingModal = () => {
+    setIsPricingModalVisible(!isPricingModalVisible);
+  };
+
+
   const [selectedSite, setSelectedSite] = useState<Site | null>(null)
   if (selectedSite) {
     // No operation, just referencing it to avoid the unused variable warning
@@ -77,11 +104,13 @@ export default function ExamplesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-rose-50 to-white">
       <header className="border-b bg-white/50 backdrop-blur-xl">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link className="flex items-center gap-2 font-semibold" href="/">
             <Network className="h-6 w-6 text-rose-600" />
             <span className="text-xl">WebRedesign</span>
           </Link>
+
+          {/* Desktop Navigation */}
           <nav className="hidden gap-6 md:flex">
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
               Home
@@ -89,15 +118,50 @@ export default function ExamplesPage() {
             <Link className="text-sm font-medium text-rose-600" href="examples">
               Examples
             </Link>
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
+            <button onClick={togglePricingModal} className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" >
               Pricing
-            </Link>
+            </button>
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
               Contact
             </Link>
           </nav>
-          <Button className="bg-rose-600 text-white hover:bg-rose-700">Get Started</Button>
+
+          {/* Mobile Menu Toggle Button */}
+          <button
+            className="md:hidden"
+            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X className="h-6 w-6 text-rose-600" /> : <Menu className="h-6 w-6 text-rose-600" />}
+          </button>
+
+          {/* Get Started Button */}
+          <Button className="hidden md:inline-flex bg-rose-600 text-white hover:bg-rose-700">
+            Get Started
+          </Button>
         </div>
+
+
+           {/* Mobile Navigation */}
+           {isMobileMenuOpen && (
+          <nav className="flex flex-col justify-center text-center gap-4 p-4 bg-white md:hidden">
+            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#"> 
+              Home
+            </Link>
+            <Link className="text-sm font-medium text-rose-600" href="examples">
+              Examples
+            </Link>
+            <Button className="text-sm shadow-none hover:bg-transparent  outline-none bg-transparent font-medium text-muted-foreground transition hover:text-rose-600" onClick={togglePricingModal}>
+              Pricing
+            </Button>
+            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
+              Contact
+            </Link>
+            <Button className="w-full bg-rose-600 text-white hover:bg-rose-700">
+              Get Started
+            </Button>
+          </nav>
+        )}
+
       </header>
 
       <main className="container mx-auto px-4 py-16">
@@ -179,6 +243,13 @@ export default function ExamplesPage() {
             </Card>
           ))}
         </section>
+
+         {/* Pricing Modal */}
+         {isPricingModalVisible && (
+            <PricingModal
+              onClose={() => setIsPricingModalVisible(false)}
+            />
+          )}
 
         <section className="mt-16 text-center">
           <h2 className="mb-4 text-3xl font-bold text-rose-950">Ready to Transform Your Website?</h2>
