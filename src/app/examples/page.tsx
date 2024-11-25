@@ -20,8 +20,8 @@ const exampleSites = [
     id: 1,
     name: "TechGadgets Store",
     category: "E-commerce",
-    beforeImage: "/placeholder.svg?height=600&width=400",
-    afterImage: "/placeholder.svg?height=600&width=400",
+    beforeImage: "/techgadget.jpg",
+    afterImage: "/tech2.jpg",
     improvements: [
       "Streamlined navigation for easier product discovery",
       "Optimized product pages for higher conversion rates",
@@ -33,8 +33,8 @@ const exampleSites = [
     id: 2,
     name: "HealthyLife Blog",
     category: "Blog",
-    beforeImage: "/placeholder.svg?height=600&width=400",
-    afterImage: "/placeholder.svg?height=600&width=400",
+    beforeImage: "/health.jpg",
+    afterImage: "/health2.jpg",
     improvements: [
       "Redesigned layout for improved readability",
       "Implemented category-based navigation",
@@ -46,8 +46,8 @@ const exampleSites = [
     id: 3,
     name: "LegalEase Services",
     category: "Professional Services",
-    beforeImage: "/placeholder.svg?height=600&width=400",
-    afterImage: "/placeholder.svg?height=600&width=400",
+    beforeImage: "/professional1.jpg",
+    afterImage: "/prof.jpg",
     improvements: [
       "Simplified content structure for better information hierarchy",
       "Implemented clear call-to-actions for consultations",
