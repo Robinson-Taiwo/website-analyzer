@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  padding: 0%;
+  box-sizing: border-box;
+  margin: 0%;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
+  overflow: auto; /* Keeps scrolling functional */
+  scrollbar-width: none; /* For Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
 }
 
 @layer base {

@@ -103,8 +103,8 @@ export default function ExamplesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-rose-50 to-white">
-      <header className="border-b bg-white/50 backdrop-blur-xl">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+       <header className="border-b bg-white/50 backdrop-blur-xl">
+        <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link className="flex items-center gap-2 font-semibold" href="/">
             <Network className="h-6 w-6 text-rose-600" />
             <span className="text-xl">WebRedesign</span>
@@ -112,17 +112,15 @@ export default function ExamplesPage() {
 
           {/* Desktop Navigation */}
           <nav className="hidden gap-6 md:flex">
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
-              Home
-            </Link>
+
             <Link className="text-sm font-medium text-rose-600" href="examples">
-              Examples
+              Showcase
             </Link>
             <button onClick={togglePricingModal} className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" >
               Pricing
             </button>
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
-              Contact
+              Workflow
             </Link>
           </nav>
 
@@ -140,28 +138,24 @@ export default function ExamplesPage() {
           </Button>
         </div>
 
-
-           {/* Mobile Navigation */}
-           {isMobileMenuOpen && (
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
           <nav className="flex flex-col justify-center text-center gap-4 p-4 bg-white md:hidden">
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#"> 
-              Home
-            </Link>
+
             <Link className="text-sm font-medium text-rose-600" href="examples">
-              Examples
+              Showcase
             </Link>
             <Button className="text-sm shadow-none hover:bg-transparent  outline-none bg-transparent font-medium text-muted-foreground transition hover:text-rose-600" onClick={togglePricingModal}>
               Pricing
             </Button>
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
-              Contact
+              Workflow
             </Link>
             <Button className="w-full bg-rose-600 text-white hover:bg-rose-700">
               Get Started
             </Button>
           </nav>
         )}
-
       </header>
 
       <main className="container mx-auto px-4 py-16">

@@ -1,5 +1,7 @@
 "use client";
-import { Network, Search, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { Network, Search, Sparkles, Users } from "lucide-react"
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -40,17 +42,15 @@ export default function LandingPage() {
 
           {/* Desktop Navigation */}
           <nav className="hidden gap-6 md:flex">
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
-              Home
-            </Link>
+
             <Link className="text-sm font-medium text-rose-600" href="examples">
-              Examples
+              Showcase
             </Link>
             <button onClick={togglePricingModal} className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" >
               Pricing
             </button>
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
-              Contact
+              Workflow
             </Link>
           </nav>
 
@@ -71,17 +71,15 @@ export default function LandingPage() {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <nav className="flex flex-col justify-center text-center gap-4 p-4 bg-white md:hidden">
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#"> 
-              Home
-            </Link>
+
             <Link className="text-sm font-medium text-rose-600" href="examples">
-              Examples
+              Showcase
             </Link>
             <Button className="text-sm shadow-none hover:bg-transparent  outline-none bg-transparent font-medium text-muted-foreground transition hover:text-rose-600" onClick={togglePricingModal}>
               Pricing
             </Button>
             <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
-              Contact
+              Workflow
             </Link>
             <Button className="w-full bg-rose-600 text-white hover:bg-rose-700">
               Get Started
@@ -120,6 +118,10 @@ export default function LandingPage() {
               </button>
             </form>
           </div>
+
+
+
+
           {/* Pricing Modal */}
           {isPricingModalVisible && (
             <PricingModal
@@ -127,13 +129,39 @@ export default function LandingPage() {
             />
           )}
           <div className="grid w-full max-w-5xl gap-8 px-4 sm:grid-cols-3">
-            {/* Cards */}
+            <div className="group space-y-3 rounded-3xl bg-white p-8 shadow-xl shadow-rose-100/10 ring-1 ring-rose-100 transition-shadow hover:shadow-rose-200/20">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-50 text-rose-600">
+                <Network className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-rose-950">Instant Analysis</h3>
+              <p className="text-muted-foreground">
+                Advanced AI analysis identifies design issues and opportunities for improvement
+              </p>
+            </div>
+            <div className="group space-y-3 rounded-3xl bg-white p-8 shadow-xl shadow-rose-100/10 ring-1 ring-rose-100 transition-shadow hover:shadow-rose-200/20">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-50 text-rose-600">
+                <Sparkles className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-rose-950">Smart Redesign</h3>
+              <p className="text-muted-foreground">
+                Get an AI-generated mockup that follows modern design principles and best practices
+              </p>
+            </div>
+            <div className="group space-y-3 rounded-3xl bg-white p-8 shadow-xl shadow-rose-100/10 ring-1 ring-rose-100 transition-shadow hover:shadow-rose-200/20">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-50 text-rose-600">
+                <Users className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-rose-950">Detailed Report</h3>
+              <p className="text-muted-foreground">
+                Compare before and after designs with a comprehensive analysis report
+              </p>
+            </div>
           </div>
         </div>
 
         {/* New Comparison Section */}
         <ComparisonSection />
-      </main>
-    </div>
+      </main >
+    </div >
   );
 }
