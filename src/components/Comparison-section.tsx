@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Download, MessageSquare, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import before from "@/components/images/design.jpg"
+import after from "@/components/images/redesign.jpg"
+
 
 export default function ComparisonSection() {
   return (
@@ -15,7 +18,7 @@ export default function ComparisonSection() {
           <div className="space-y-8">
             <div className="relative aspect-[9/16] rounded-xl overflow-hidden shadow-2xl">
               <Image
-                src="/placeholder.svg?height=1600&width=900"
+                src={after}
                 alt="Original website design"
                 layout="fill"
                 objectFit="cover"
@@ -49,7 +52,7 @@ export default function ComparisonSection() {
           <div className="space-y-8">
             <div className="relative aspect-[9/16] rounded-xl overflow-hidden shadow-2xl">
               <Image
-                src="/placeholder.svg?height=1600&width=900"
+                src={before}
                 alt="Redesigned website"
                 layout="fill"
                 objectFit="cover"

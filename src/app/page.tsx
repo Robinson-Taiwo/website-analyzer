@@ -33,60 +33,83 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-rose-50 via-white to-rose-50">
-      <header className="border-b bg-white/50 backdrop-blur-xl">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <Link className="flex items-center gap-2 font-semibold" href="/">
-            <Network className="h-6 w-6 text-rose-600" />
-            <span className="text-xl">WebRedesign</span>
-          </Link>
+   <header className="border-b bg-white/50 backdrop-blur-xl">
+  <div className="container mx-auto flex h-16 items-center justify-between px-4">
+    <Link className="flex items-center gap-2 font-semibold" href="/">
+      <Network className="h-6 w-6 text-rose-600" />
+      <span className="text-xl">WebRedesign</span>
+    </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden gap-6 md:flex">
+    {/* Desktop Navigation */}
+    <nav className="hidden gap-6 md:flex">
+      <Link className="text-sm font-medium text-rose-600" href="examples">
+        Showcase
+      </Link>
+      <button
+        onClick={togglePricingModal}
+        className="text-sm font-medium text-muted-foreground transition hover:text-rose-600"
+      >
+        Pricing
+      </button>
+      <Link
+        className="text-sm font-medium text-muted-foreground transition hover:text-rose-600"
+        href="#"
+      >
+        Workflow
+      </Link>
+    </nav>
 
-            <Link className="text-sm font-medium text-rose-600" href="examples">
-              Showcase
-            </Link>
-            <button onClick={togglePricingModal} className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" >
-              Pricing
-            </button>
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
-              Workflow
-            </Link>
-          </nav>
+    {/* Get Started Button with Sign In Link */}
+    <div className="hidden md:flex items-center gap-4">
+      <Link
+        className="text-sm font-medium text-muted-foreground transition hover:text-rose-600"
+        href="#"
+      >
+        Sign In
+      </Link>
+      <Button className="bg-rose-600 text-white hover:bg-rose-700">
+        Get Started
+      </Button>
+    </div>
 
-          {/* Mobile Menu Toggle Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="h-6 w-6 text-rose-600" /> : <Menu className="h-6 w-6 text-rose-600" />}
-          </button>
+    {/* Mobile Menu Toggle Button */}
+    <button
+      className="md:hidden"
+      onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+    >
+      {isMobileMenuOpen ? (
+        <X className="h-6 w-6 text-rose-600" />
+      ) : (
+        <Menu className="h-6 w-6 text-rose-600" />
+      )}
+    </button>
+  </div>
 
-          {/* Get Started Button */}
-          <Button className="hidden md:inline-flex bg-rose-600 text-white hover:bg-rose-700">
-            Get Started
-          </Button>
-        </div>
+  {/* Mobile Navigation */}
+  {isMobileMenuOpen && (
+    <nav className="flex flex-col justify-center text-center gap-4 p-4 bg-white md:hidden">
+      <Link className="text-sm font-medium text-rose-600" href="examples">
+        Showcase
+      </Link>
+      <Button
+        className="text-sm shadow-none hover:bg-transparent outline-none bg-transparent font-medium text-muted-foreground transition hover:text-rose-600"
+        onClick={togglePricingModal}
+      >
+        Pricing
+      </Button>
+      <Link
+        className="text-sm font-medium text-muted-foreground transition hover:text-rose-600"
+        href="#"
+      >
+        Workflow
+      </Link>
+      <Button className="w-full bg-rose-600 text-white hover:bg-rose-700">
+        Get Started
+      </Button>
+    </nav>
+  )}
+</header>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <nav className="flex flex-col justify-center text-center gap-4 p-4 bg-white md:hidden">
-
-            <Link className="text-sm font-medium text-rose-600" href="examples">
-              Showcase
-            </Link>
-            <Button className="text-sm shadow-none hover:bg-transparent  outline-none bg-transparent font-medium text-muted-foreground transition hover:text-rose-600" onClick={togglePricingModal}>
-              Pricing
-            </Button>
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
-              Workflow
-            </Link>
-            <Button className="w-full bg-rose-600 text-white hover:bg-rose-700">
-              Get Started
-            </Button>
-          </nav>
-        )}
-      </header>
 
       <main className="container mx-auto px-4">
         {/* Main Content */}

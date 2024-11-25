@@ -103,7 +103,7 @@ export default function ExamplesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-rose-50 to-white">
-       <header className="border-b bg-white/50 backdrop-blur-xl">
+      <header className="border-b bg-white/50 backdrop-blur-xl">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link className="flex items-center gap-2 font-semibold" href="/">
             <Network className="h-6 w-6 text-rose-600" />
@@ -112,43 +112,65 @@ export default function ExamplesPage() {
 
           {/* Desktop Navigation */}
           <nav className="hidden gap-6 md:flex">
-
             <Link className="text-sm font-medium text-rose-600" href="examples">
               Showcase
             </Link>
-            <button onClick={togglePricingModal} className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" >
+            <button
+              onClick={togglePricingModal}
+              className="text-sm font-medium text-muted-foreground transition hover:text-rose-600"
+            >
               Pricing
             </button>
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
+            <Link
+              className="text-sm font-medium text-muted-foreground transition hover:text-rose-600"
+              href="#"
+            >
               Workflow
             </Link>
           </nav>
+
+          {/* Get Started Button with Sign In Link */}
+          <div className="hidden md:flex items-center gap-4">
+            <Link
+              className="text-sm font-medium text-muted-foreground transition hover:text-rose-600"
+              href="#"
+            >
+              Sign In
+            </Link>
+            <Button className="bg-rose-600 text-white hover:bg-rose-700">
+              Get Started
+            </Button>
+          </div>
 
           {/* Mobile Menu Toggle Button */}
           <button
             className="md:hidden"
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X className="h-6 w-6 text-rose-600" /> : <Menu className="h-6 w-6 text-rose-600" />}
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6 text-rose-600" />
+            ) : (
+              <Menu className="h-6 w-6 text-rose-600" />
+            )}
           </button>
-
-          {/* Get Started Button */}
-          <Button className="hidden md:inline-flex bg-rose-600 text-white hover:bg-rose-700">
-            Get Started
-          </Button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <nav className="flex flex-col justify-center text-center gap-4 p-4 bg-white md:hidden">
-
             <Link className="text-sm font-medium text-rose-600" href="examples">
               Showcase
             </Link>
-            <Button className="text-sm shadow-none hover:bg-transparent  outline-none bg-transparent font-medium text-muted-foreground transition hover:text-rose-600" onClick={togglePricingModal}>
+            <Button
+              className="text-sm shadow-none hover:bg-transparent outline-none bg-transparent font-medium text-muted-foreground transition hover:text-rose-600"
+              onClick={togglePricingModal}
+            >
               Pricing
             </Button>
-            <Link className="text-sm font-medium text-muted-foreground transition hover:text-rose-600" href="#">
+            <Link
+              className="text-sm font-medium text-muted-foreground transition hover:text-rose-600"
+              href="#"
+            >
               Workflow
             </Link>
             <Button className="w-full bg-rose-600 text-white hover:bg-rose-700">
@@ -157,6 +179,7 @@ export default function ExamplesPage() {
           </nav>
         )}
       </header>
+
 
       <main className="container mx-auto px-4 py-16">
         <section className="mb-16 text-center">
@@ -238,12 +261,12 @@ export default function ExamplesPage() {
           ))}
         </section>
 
-         {/* Pricing Modal */}
-         {isPricingModalVisible && (
-            <PricingModal
-              onClose={() => setIsPricingModalVisible(false)}
-            />
-          )}
+        {/* Pricing Modal */}
+        {isPricingModalVisible && (
+          <PricingModal
+            onClose={() => setIsPricingModalVisible(false)}
+          />
+        )}
 
         <section className="mt-16 text-center">
           <h2 className="mb-4 text-3xl font-bold text-rose-950">Ready to Transform Your Website?</h2>
