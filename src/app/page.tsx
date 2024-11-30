@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import ComparisonSection from "../components/Comparison-section";
 import PricingModal from "@/components/Pricing-modal";
+import WebsiteForm from "@/components/WebsiteForm";
 
 export default function LandingPage() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -123,7 +124,7 @@ export default function LandingPage() {
                 Enter your website URL below and let our AI analyze and generate a modern, optimized redesign in seconds
               </p>
             </div>
-            <form
+            {/* <form
               onSubmit={(e) => e.preventDefault()}
               className="group mx-auto flex max-w-3xl items-center gap-2 rounded-full bg-white p-2 shadow-2xl shadow-rose-100/50 ring-1 ring-rose-100 transition-shadow hover:shadow-rose-200/50 focus-within:ring-2 focus-within:ring-rose-200"
             >
@@ -139,7 +140,8 @@ export default function LandingPage() {
                 <Search className="h-5 w-5" />
                 <span className="sr-only">Analyze Website</span>
               </button>
-            </form>
+            </form> */}
+            <WebsiteForm/>
           </div>
 
 
