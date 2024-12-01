@@ -1,24 +1,29 @@
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Download, MessageSquare, ArrowRight } from "lucide-react"
-import Link from "next/link"
-import before from "@/components/images/design.jpg"
-import after from "@/components/images/redesign.jpg"
+import React from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Download, MessageSquare, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
+// Dummy image for "After"
+import afterImage from "@/components/images/redesign.jpg";
 
-export default function DummyComparisonSection() {
+interface ComparisonSectionProps {
+  beforeImage: string; // URL or imported image for "Before"
+}
+
+const ComparisonSection: React.FC<ComparisonSectionProps> = ({ beforeImage }) => {
   return (
-    <section className="py-24 w-full ">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-rose-950 mb-16">
+    <section className="py-24   w-full  ">
+      <div className="container w-full mx-auto px-4">
+        <h2 className="text-4xl font-bold  text-center text-rose-950 mb-16">
           Witness the Transformation
         </h2>
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-8">
             <div className="relative aspect-[9/16] rounded-xl overflow-hidden shadow-2xl">
               <Image
-                src={after}
+                src={beforeImage}
                 alt="Original website design"
                 layout="fill"
                 objectFit="cover"
@@ -52,7 +57,7 @@ export default function DummyComparisonSection() {
           <div className="space-y-8">
             <div className="relative aspect-[9/16] rounded-xl overflow-hidden shadow-2xl">
               <Image
-                src={before}
+                src={afterImage}
                 alt="Redesigned website"
                 layout="fill"
                 objectFit="cover"
@@ -90,16 +95,17 @@ export default function DummyComparisonSection() {
             Transform your website from ordinary to extraordinary. Choose your path to digital excellence.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link href="/" >
-
+            <Link href="/">
               <Button size="lg" className="bg-rose-600 text-white hover:bg-rose-700 shadow-lg hover:shadow-xl transition-all duration-300">
                 <Download className="mr-2 h-5 w-5" />
                 Get Your Redesign Now
               </Button>
             </Link>
-
-
-            <Button size="lg" variant="outline" className="border-rose-600 text-rose-600 hover:bg-rose-50 shadow-lg hover:shadow-xl transition-all duration-300">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-rose-600 text-rose-600 hover:bg-rose-50 shadow-lg hover:shadow-xl transition-all duration-300"
+            >
               <MessageSquare className="mr-2 h-5 w-5" />
               Consult Our Design Experts
             </Button>
@@ -111,5 +117,7 @@ export default function DummyComparisonSection() {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default ComparisonSection;
