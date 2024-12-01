@@ -38,7 +38,7 @@ const WebsiteToImage: React.FC = () => {
     const generateScreenshot = async (url: string): Promise<string | null> => {
         try {
             const encodedUrl = encodeURIComponent(url);
-            const apiUrl = `https://api.screenshotone.com/take?access_key=r6e0e_rDCaPASA&url=${encodedUrl}&format=jpg&block_ads=true&timeout=60&response_type=by_format&full_page=true&image_quality=80`;
+            const apiUrl = `https://api.screenshotone.com/take?access_key=${process.env.NEXT_PUBLIC_SCREENSHOT_API_KEY}&url=${encodedUrl}&format=jpg&block_ads=true&timeout=60&response_type=by_format&full_page=true&image_quality=80`;
 
             const response = await fetch(apiUrl);
             if (!response.ok) {
@@ -111,7 +111,7 @@ const WebsiteToImage: React.FC = () => {
 
     useEffect(() => {
         if (imageUrl && progress === 100) {
-            setTimeout(() => setShowRedesign(true), 1000); // Delay for "Generating redesign"
+            setTimeout(() => setShowRedesign(true), 5000); // Delay for "Generating redesign"
         }
     }, [imageUrl, progress]);
 
@@ -151,12 +151,12 @@ const WebsiteToImage: React.FC = () => {
 
             {showRedesign && imageUrl && (
                 <div className="mt-6 w-full flex flex-col items-center">
-                    <p className="text-green-600 text-lg mb-4">Screenshot generated!🎉</p>
+                    <p className="text-green-600 text-lg mb-4">Redesign generated!🎉</p>
                     <ComparisonSection beforeImage={imageUrl} />
                 </div>
             )}
 
-            {isLoading && isWorking && !imageUrl && (
+            {(!showRedesign || (isLoading && !imageUrl)) && (
                 <div className="w-full flex flex-col items-center mt-8">
                     <Features />
                     <DummyComparisonSection />
