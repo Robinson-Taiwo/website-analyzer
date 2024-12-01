@@ -16,6 +16,9 @@ const WebsiteToImage: React.FC = () => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
     const [showRedesign, setShowRedesign] = useState<boolean>(false);
 
+    const apiKey = process.env.NEXT_PUBLIC_SCREENSHOT_API_KEY;
+
+
     const validateUrlFormat = (url: string): boolean => {
         const urlPattern = new RegExp(
             /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:[0-9]{1,5})?(\/.*)?$/
@@ -38,7 +41,7 @@ const WebsiteToImage: React.FC = () => {
     const generateScreenshot = async (url: string): Promise<string | null> => {
         try {
             const encodedUrl = encodeURIComponent(url);
-            const apiUrl = `https://api.screenshotone.com/take?access_key=${process.env.NEXT_PUBLIC_SCREENSHOT_API_KEY}&url=${encodedUrl}&format=jpg&block_ads=true&timeout=60&response_type=by_format&full_page=true&image_quality=80`;
+            const apiUrl = `https://api.screenshotone.com/take?access_key=${apiKey}&url=${encodedUrl}&format=jpg&block_ads=true&timeout=60&response_type=by_format&full_page=true&image_quality=80`;
 
             const response = await fetch(apiUrl);
             if (!response.ok) {
