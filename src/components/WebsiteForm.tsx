@@ -156,7 +156,7 @@ const WebsiteToImage: React.FC = () => {
                 </div>
             )}
 
-            {!isLoading && !isWorking && !imageUrl && (
+            {isLoading && isWorking && !imageUrl && (
                 <div className="w-full flex flex-col items-center mt-8">
                     <Features />
                     <DummyComparisonSection />
