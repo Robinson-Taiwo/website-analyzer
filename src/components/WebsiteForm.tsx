@@ -140,7 +140,7 @@ const WebsiteToImage: React.FC = () => {
             {!isLoading && error && <p className="text-red-600 text-sm mt-4">{error}</p>}
             {isWorking && !imageUrl && (
                 <div className="mt-4 w-full flex flex-col items-center">
-                    <p className="text-green-600 mb-2">Generating screenshot...</p>
+                    <p className="text-green-600 mb-2">Taking screenshot...</p>
                     <Progress value={progress} className="w-[60%]" />
                 </div>
             )}
